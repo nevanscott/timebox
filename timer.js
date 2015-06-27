@@ -47,7 +47,8 @@ function Timer(timer, timebox) {
 }
 Timer.prototype.start = function(){
   $('#label').text(this.label);
-  this.step();
+  printTime(this.remaining, '#remaining');
+  printTime(this.elapsed, '#elapsed');
 };
 Timer.prototype.step = function(){
   var timer = this;
