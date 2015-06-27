@@ -1,18 +1,30 @@
+---
+---
+
 body {
-	background: green;
-	color: white;
 	font-family: sans-serif;
 	line-height: 1.2;
-	margin-top: 5vh;
-	text-align: center;
 }
-body.warning {
-	background: #fee101;
-	color: black;
-}
-body.stop {
-	background: red;
+
+#timer {
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: green;
 	color: white;
+	padding-top: 5vh;
+	text-align: center;
+	body.warning & {
+		background: #fee101;
+		color: black;
+	}
+	body.stop & {
+		background: red;
+		color: white;
+	}
 }
 
 .time {

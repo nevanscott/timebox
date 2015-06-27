@@ -1,9 +1,9 @@
 var timers = [
   {
     label: "Presentation",
-    minutes: 1,
+    minutes: 8,
     warning: {
-      minutes: .75
+      minutes: 2
     },
     countdown: {
       seconds: 20
