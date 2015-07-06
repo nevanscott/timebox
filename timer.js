@@ -1,7 +1,7 @@
 var timers = [
   {
     label: "Presentation",
-    minutes: 8,
+    minutes: 7,
     warning: {
       minutes: 2
     },
