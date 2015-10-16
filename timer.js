@@ -80,7 +80,7 @@ var AppView = Backbone.View.extend({
 $(function(){
 	var timer = new Timer({
     label: "Presentation",
-    duration: 7*60,
+    duration: 8*60,
     warning: 2*60
 	});
 	var app = new AppView();
