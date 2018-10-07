@@ -3,8 +3,11 @@
     :is="type"
     :href="href"
     :type="submit"
-    :class="['button', size, state, variation]">
-      <slot/>
+    :class="['button', size, state, variation]"
+    v-bind="$attrs"
+    v-on="$listeners"
+  >
+    <slot/>
   </component>
 </template>
 
