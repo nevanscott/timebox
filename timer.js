@@ -1,110 +1,84 @@
-var Timer = Backbone.Model.extend({
-	defaults: function(){
-		return {
-			label: "Untitled",
-			duration: 60,
-		};
-	}
-});
+let t;
+let remaining;
+let elapsed = 0;
+let warning;
+let isPlaying = false;
 
-var Timebox = Backbone.Collection.extend({
-	model: Timer
-});
+function renderRemaining(time) {
+  document.querySelector('#remaining').innerHTML = formatTime(time);
+}
 
-var TimerView = Backbone.View.extend({
-	el: '#timer',
-	events: {
-		'click .time.focus': 'pause',
-		'click .time:not(.focus)': 'focus'
-	},
-	initialize: function(){
-		this.elapsed = 0;
-		this.remaining = this.model.get('duration');
-		this.isPlaying = false;
-		this.listenTo(this.model, 'change', this.render);
-	},
-	render: function(){
-		$('#label').text(this.model.get('label'));
-		printTime(this.remaining, '#remaining');
-		printTime(this.elapsed, '#elapsed');
-	},
-	step: function(){
-		var timerView = this;
-		printTime(this.remaining, '#remaining');
-		printTime(this.elapsed, '#elapsed');
-		if(this.remaining > 0) {
-			if(this.model.get('warning') && this.remaining <= this.model.get('warning')) {
-				$('body').attr('class', 'warning');
-			}
-			this.elapsed++;
-			this.remaining--;
-			this.t = setTimeout(function(){ timerView.step(); }, 1000);
-			this.isPlaying = true;
-		} else {
-			$('body').attr('class', 'stop');
-			this.isPlaying = false;
-		}
-	},
-	pause: function(){
-		if(this.isPlaying) {
-			this.isPlaying = false;
-			clearTimeout(this.t);
-		} else {
-			this.step();
-		}
-	},
-	focus: function(e){
-		this.$('.time').removeClass('focus');
-		$(e.currentTarget).addClass('focus');
-	}
-});
+function renderElapsed(time) {
+  document.querySelector('#elapsed').innerHTML = formatTime(time);
+}
 
-var AppView = Backbone.View.extend({
-	el: document,
-	events: {
-		'keypress': 'pause'
-	},
-	render: function(){
-		this.activeTimer.render();
-	},
-	addTimer: function(timer){
-		this.activeTimer = new TimerView({model: timer});
-	},
-	pause: function(e){
-		if(e.keyCode === 32) {
-			this.activeTimer.pause();
-		}
-	}
-});
+function renderTimer(config) {
+  document.querySelector('#label').innerHTML = config.label;
+  renderElapsed(0);
+  renderRemaining(config.duration);
+}
 
-$(function(){
-	var timer = new Timer({
-    label: "Presentation",
-    duration: 15*60,
-    warning: 2*60
-	});
-	var app = new AppView();
-	app.addTimer(timer);
-	app.render();
-});
+function minutesToSeconds(minutes) {
+  return minutes * 60;
+}
 
-// $('#access').click(function(){
-// 	$('#timer').toggleClass('blur');
-// 	$('#controls').toggleClass('active');
-// });
-// 
-// $('#time_controls').submit(function(){
-// 	
-// });
+function stepTimer() {
+  renderRemaining(remaining);
+  renderElapsed(elapsed);
+  if(remaining > 0) {
+    if(warning && remaining <= warning) {
+      document.body.className = 'warning';
+    }
+    elapsed++;
+    remaining--;
+    t = setTimeout(stepTimer, 1000);
+    isPlaying = true;
+  } else {
+    document.body.className = 'stop';
+    isPlaying = false;
+  }
+}
 
-function printTime(time, target) {
+function toggleTimer() {
+  if(isPlaying) {
+    isPlaying = false;
+    clearTimeout(t);
+  } else {
+    stepTimer();
+  }
+}
+
+function startTimer(time) {
+  remaining = time;
+  elapsed = 0;
+  stepTimer();
+}
+
+function addEventListeners() {
+
+}
+
+
+function main() {
+  const duration = minutesToSeconds(.2);
+  const warning = minutesToSeconds(.1);
+  renderTimer({
+    label: 'Presentation',
+    duration: duration,
+    warning: warning
+  });
+  addEventListeners();
+  startTimer(duration);
+}
+
+function formatTime(time) {
   var minutes = Math.floor(time/60);
   var seconds = time % 60;
-  $(target).text(minutes+':'+pad(seconds,2));
+  return minutes + ':' + pad(seconds,2);
 }
 
 function pad(num, size) {
-    var s = num+"";
-    while (s.length < size) s = "0" + s;
-    return s;
+  var s = num + '';
+  while (s.length < size) s = '0' + s;
+  return s;
 }

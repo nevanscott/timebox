@@ -1,7 +1,6 @@
----
----
-
-$transition: 5s;
+html {
+	--transition: 5s;
+}
 
 body {
 	font-family: sans-serif;
@@ -19,25 +18,22 @@ body {
 	color: white;
 	padding-top: 5vh;
 	text-align: center;
-	-webkit-transition: -webkit-filter $transition, filter $transition;
-	transition: filter $transition;
-	body.warning & {
-		background: #fee101;
-		color: black;
-	}
-	body.stop & {
-		background: red;
-		color: white;
-	}
-	&.blur {
-		-webkit-filter: blur(2px);
-		filter: blur(2px);
-	}
+	transition: filter var(--transition);
+}
+body.warning #timer {
+	background: #fee101;
+	color: black;
+}
+body.stop #timer {
+	background: red;
+	color: white;
+}
+#timer.blur {
+	filter: blur(2px);
 }
 
 .time {
 	font-size: 5vh;
-	-webkit-transition: font-size 250ms;
 	transition: font-size 250ms;
 }
 .time:hover {
@@ -72,11 +68,10 @@ body {
 	padding: 2vh;
 	float: right;
 	cursor: pointer;
-	-webkit-transition: color 250ms;
 	transition: color 250ms;
-	&:hover {
-		color: white;
-	}
+}
+#access:hover {
+	color: white;
 }
 
 #controls {
@@ -89,24 +84,23 @@ body {
 	left: 0;
 	display: none;
 	opacity: 0;
-	-webkit-transition: opacity $transition;
-	transition: opacity $transition;
-	&.active {
-		display: block;
-		opacity: 1;
-	}
+	transition: opacity var(--transition);
 	text-align: center;
 	font-size: 3vh;
 	color: white;
-	label {
-		display: block;
-		margin: 5vh 0;
-		input {
-			text-align: center;
-			display: block;
-			width: 8em;
-			font-size: 3vh;
-			margin: auto;
-		}
-	}
+}
+#controls.active {
+	display: block;
+	opacity: 1;
+}
+#controls label {
+	display: block;
+	margin: 5vh 0;
+}
+#controls label input {
+	text-align: center;
+	display: block;
+	width: 8em;
+	font-size: 3vh;
+	margin: auto;
 }
