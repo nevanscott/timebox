@@ -1,35 +1,30 @@
-html {
-	--transition: 5s;
-}
-
 body {
 	font-family: sans-serif;
 	line-height: 1.2;
+	margin: 8px;
+	padding: 0;
 }
 
-#timer {
-	position: fixed;
-	z-index: 1;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
+.timer {
 	background: green;
+	box-sizing: border-box;
 	color: white;
-	padding-top: 5vh;
-	text-align: center;
-	transition: filter var(--transition);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: calc(100vh - 16px);
 }
-body.warning #timer {
+.timer + .timer {
+	margin-top: 8px;
+}
+.warning {
 	background: #fee101;
 	color: black;
 }
-body.stop #timer {
+.stop {
 	background: red;
 	color: white;
-}
-#timer.blur {
-	filter: blur(2px);
 }
 
 .time {
@@ -40,67 +35,19 @@ body.stop #timer {
 	cursor: pointer;
 }
 .focus {
-	font-size: 55vh;
+	font-size: 45vh;
 }
 .focus:hover {
 	background: none;
 }
 
-#label {
+.label {
 	font-size: 3vh;
 	letter-spacing: .1em;
 	text-transform: uppercase;
 	font-weight: bold;
 	color: rgba(255,255,255,.5);
 }
-.warning #label {
+.warning .label {
 	color: rgba(0,0,0,.25);
-}
-
-#access {
-	display: none;
-	position: fixed;
-	top: 0;
-	right: 0;
-	z-index: 10;
-	color: rgba(255,255,255,.5);
-	font-size: 5vh;
-	padding: 2vh;
-	float: right;
-	cursor: pointer;
-	transition: color 250ms;
-}
-#access:hover {
-	color: white;
-}
-
-#controls {
-	position: fixed;
-	z-index: 2;
-	background: rgba(0,0,0,.7);
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	display: none;
-	opacity: 0;
-	transition: opacity var(--transition);
-	text-align: center;
-	font-size: 3vh;
-	color: white;
-}
-#controls.active {
-	display: block;
-	opacity: 1;
-}
-#controls label {
-	display: block;
-	margin: 5vh 0;
-}
-#controls label input {
-	text-align: center;
-	display: block;
-	width: 8em;
-	font-size: 3vh;
-	margin: auto;
 }

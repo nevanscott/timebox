@@ -1,11 +1,3 @@
-// Globals
-var t;
-var remaining;
-var elapsed = 0;
-var warning;
-var isPlaying = false;
-
-
 // Helpers
 function pad(num, size) {
   var s = num + '';
@@ -24,86 +16,96 @@ function minutesToSeconds(minutes) {
 }
 
 
-// Renderers
-function renderRemaining(time) {
-  document.querySelector('#remaining').innerHTML = formatTime(time);
-}
+// Timer class
+function Timer(options) {
+  var timer = this;
 
-function renderElapsed(time) {
-  document.querySelector('#elapsed').innerHTML = formatTime(time);
-}
+  this.label = options.label;
+  this.duration = options.duration;
+  this.warning = options.warning;
 
-function renderTimer(config) {
-  document.querySelector('#label').innerHTML = config.label;
-  renderElapsed(0);
-  renderRemaining(config.duration);
-}
+  this.remaining = this.duration;
+  this.elapsed = 0;
 
+  this.el = document.createElement('div');
+  this.el.classList.add('timer');
+  this.el.innerHTML = this.template;
+  this.render();
 
-// Timer functions
-function stepTimer() {
-  renderRemaining(remaining);
-  renderElapsed(elapsed);
-  if(remaining > 0) {
-    if(warning && remaining <= warning) {
-      document.body.className = 'warning';
-    }
-    elapsed++;
-    remaining--;
-    t = setTimeout(stepTimer, 1000);
-    isPlaying = true;
-  } else {
-    document.body.className = 'stop';
-    isPlaying = false;
-  }
-}
-
-function toggleFocus() {
-  var $times = document.querySelectorAll('.time');
-  for (var i = 0; i < $times.length; i++) {
-    $times[i].classList.toggle('focus');
-  }
-}
-
-function toggleTimer() {
-  if(isPlaying) {
-    isPlaying = false;
-    clearTimeout(t);
-  } else {
-    stepTimer();
-  }
-}
-
-function initTimer(time) {
-  remaining = time;
-  elapsed = 0;
-}
-
-
-// Event Listeners
-function addEventListeners() {
-  var $timer = document.getElementById('timer');
-  $timer.addEventListener('click', function(e) {
+  this.el.addEventListener('click', function(e) {
     if(e.target.classList.contains('time')) {
       if(e.target.classList.contains('focus')) {
-        toggleTimer();
+        timer.toggleTimer();
       } else {
-        toggleFocus();
+        timer.toggleFocus();
       }
     }
   });
+
+  return this;
 }
+Timer.prototype.template = `
+  <div class="label"></div>
+  <div class="remaining time focus"></div>
+  <div class="elapsed time"></div>
+`;
+Timer.prototype.render = function() {
+  this.el.querySelector('.label').innerHTML = this.label;
+  this.renderElapsed(0);
+  this.renderRemaining(this.duration);
+  return this;
+};
+Timer.prototype.renderRemaining = function(time) {
+  this.el.querySelector('.remaining').innerHTML = formatTime(time);
+};
+Timer.prototype.renderElapsed = function(time) {
+  this.el.querySelector('.elapsed').innerHTML = formatTime(time);
+};
+Timer.prototype.stepTimer = function() {
+  this.renderRemaining(this.remaining);
+  this.renderElapsed(this.elapsed);
+  if(this.remaining > 0) {
+    if(this.warning && this.remaining <= this.warning) {
+      this.el.classList.add('warning');
+    }
+    this.elapsed++;
+    this.remaining--;
+    this.t = setTimeout(this.stepTimer.bind(this), 1000);
+    this.isPlaying = true;
+  } else {
+    this.el.classList.remove('warning');
+    this.el.classList.add('stop');
+    this.isPlaying = false;
+  }
+};
+Timer.prototype.toggleFocus = function() {
+  var $times = this.el.querySelectorAll('.time');
+  for (var i = 0; i < $times.length; i++) {
+    $times[i].classList.toggle('focus');
+  }
+};
+Timer.prototype.toggleTimer = function() {
+  if(this.isPlaying) {
+    this.isPlaying = false;
+    clearTimeout(this.t);
+  } else {
+    this.stepTimer();
+  }
+};
 
 
 // Main
 function main() {
-  var duration = minutesToSeconds(15);
-  var warning = minutesToSeconds(2);
-  renderTimer({
+  var presentationTimer = new Timer({
     label: 'Presentation',
-    duration: duration,
-    warning: warning
+    duration: minutesToSeconds(15),
+    warning: minutesToSeconds(2)
   });
-  addEventListeners();
-  initTimer(duration);
+  var feedbackTimer = new Timer({
+    label: 'Feedback',
+    duration: minutesToSeconds(5),
+    warning: minutesToSeconds(2)
+  });
+  document.getElementById('app').appendChild(presentationTimer.el);
+  document.getElementById('app').appendChild(feedbackTimer.el);
 }
