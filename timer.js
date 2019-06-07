@@ -1,9 +1,30 @@
-let t;
-let remaining;
-let elapsed = 0;
-let warning;
-let isPlaying = false;
+// Globals
+var t;
+var remaining;
+var elapsed = 0;
+var warning;
+var isPlaying = false;
 
+
+// Helpers
+function pad(num, size) {
+  var s = num + '';
+  while (s.length < size) s = '0' + s;
+  return s;
+}
+
+function formatTime(time) {
+  var minutes = Math.floor(time/60);
+  var seconds = time % 60;
+  return minutes + ':' + pad(seconds,2);
+}
+
+function minutesToSeconds(minutes) {
+  return minutes * 60;
+}
+
+
+// Renderers
 function renderRemaining(time) {
   document.querySelector('#remaining').innerHTML = formatTime(time);
 }
@@ -18,10 +39,8 @@ function renderTimer(config) {
   renderRemaining(config.duration);
 }
 
-function minutesToSeconds(minutes) {
-  return minutes * 60;
-}
 
+// Timer functions
 function stepTimer() {
   renderRemaining(remaining);
   renderElapsed(elapsed);
@@ -39,6 +58,13 @@ function stepTimer() {
   }
 }
 
+function toggleFocus() {
+  var $times = document.querySelectorAll('.time');
+  for (var i = 0; i < $times.length; i++) {
+    $times[i].classList.toggle('focus');
+  }
+}
+
 function toggleTimer() {
   if(isPlaying) {
     isPlaying = false;
@@ -48,37 +74,36 @@ function toggleTimer() {
   }
 }
 
-function startTimer(time) {
+function initTimer(time) {
   remaining = time;
   elapsed = 0;
-  stepTimer();
 }
 
+
+// Event Listeners
 function addEventListeners() {
-
+  var $timer = document.getElementById('timer');
+  $timer.addEventListener('click', function(e) {
+    if(e.target.classList.contains('time')) {
+      if(e.target.classList.contains('focus')) {
+        toggleTimer();
+      } else {
+        toggleFocus();
+      }
+    }
+  });
 }
 
 
+// Main
 function main() {
-  const duration = minutesToSeconds(.2);
-  const warning = minutesToSeconds(.1);
+  var duration = minutesToSeconds(15);
+  var warning = minutesToSeconds(2);
   renderTimer({
     label: 'Presentation',
     duration: duration,
     warning: warning
   });
   addEventListeners();
-  startTimer(duration);
-}
-
-function formatTime(time) {
-  var minutes = Math.floor(time/60);
-  var seconds = time % 60;
-  return minutes + ':' + pad(seconds,2);
-}
-
-function pad(num, size) {
-  var s = num + '';
-  while (s.length < size) s = '0' + s;
-  return s;
+  initTimer(duration);
 }
