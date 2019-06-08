@@ -13,12 +13,12 @@ export default class Timer {
     this.elapsed = 0;
 
     this.template = `
-      <div class="label"></div>
-      <div class="remaining time focus"></div>
-      <div class="elapsed time"></div>
+      <h2 class="label"></h2>
+      <time class="remaining time focus"></time>
+      <time class="elapsed time"></time>
     `;
 
-    this.el = document.createElement('div');
+    this.el = document.createElement('article');
     this.el.classList.add('timer');
     this.el.innerHTML = this.template;
     this.render();
