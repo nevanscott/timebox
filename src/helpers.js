@@ -13,3 +13,20 @@ export function formatTime(time) {
 export function minutesToSeconds(minutes) {
   return minutes * 60;
 }
+
+export function timeInSeconds(time) {
+  const m = parseInt(time.split('m')[0]);
+  const s = parseInt(time.split('m')[1] ? time.split('m')[1] : 0);
+  return minutesToSeconds(m) + s;
+}
+
+export function getTimerParams(str=window.location.search) {
+  return str.includes('?t=') && str.split('?t=')[1].split('|').map(
+    (part) => {
+      return {
+        label: part.split(':')[0],
+        duration: timeInSeconds(part.split(':')[1])
+      }
+    }
+  );
+}

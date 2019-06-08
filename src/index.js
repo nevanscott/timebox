@@ -1,20 +1,22 @@
-import { minutesToSeconds } from './helpers';
+import { getTimerParams } from './helpers';
 import Timer from './Timer';
 
-// Main
-function main() {
-  const presentationTimer = new Timer({
+const defaultTimerParams = [
+  {
     label: 'Presentation',
-    duration: minutesToSeconds(15),
-    warning: minutesToSeconds(2)
-  });
-  const feedbackTimer = new Timer({
+    duration: 15*60,
+    warning: 2*60
+  },
+  {
     label: 'Feedback',
-    duration: minutesToSeconds(5),
-    warning: minutesToSeconds(2)
-  });
-  document.getElementById('app').appendChild(presentationTimer.el);
-  document.getElementById('app').appendChild(feedbackTimer.el);
-}
+    duration: 2*60,
+    warning: 1*60
+  }
+];
 
-main();
+const timerParams = getTimerParams() || defaultTimerParams;
+
+timerParams.map(options => {
+  const timer = new Timer(options);
+  document.getElementById('app').appendChild(timer.el);
+})
