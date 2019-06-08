@@ -1,24 +1,7 @@
-// Helpers
-function pad(num, size) {
-  var s = num + '';
-  while (s.length < size) s = '0' + s;
-  return s;
-}
+import { formatTime } from './helpers';
 
-function formatTime(time) {
-  var minutes = Math.floor(time/60);
-  var seconds = time % 60;
-  return minutes + ':' + pad(seconds,2);
-}
-
-function minutesToSeconds(minutes) {
-  return minutes * 60;
-}
-
-
-// Timer class
-function Timer(options) {
-  var timer = this;
+export default function Timer(options) {
+  const timer = this;
 
   this.label = options.label;
   this.duration = options.duration;
@@ -79,8 +62,8 @@ Timer.prototype.stepTimer = function() {
   }
 };
 Timer.prototype.toggleFocus = function() {
-  var $times = this.el.querySelectorAll('.time');
-  for (var i = 0; i < $times.length; i++) {
+  const $times = this.el.querySelectorAll('.time');
+  for (let i = 0; i < $times.length; i++) {
     $times[i].classList.toggle('focus');
   }
 };
@@ -92,20 +75,3 @@ Timer.prototype.toggleTimer = function() {
     this.stepTimer();
   }
 };
-
-
-// Main
-function main() {
-  var presentationTimer = new Timer({
-    label: 'Presentation',
-    duration: minutesToSeconds(15),
-    warning: minutesToSeconds(2)
-  });
-  var feedbackTimer = new Timer({
-    label: 'Feedback',
-    duration: minutesToSeconds(5),
-    warning: minutesToSeconds(2)
-  });
-  document.getElementById('app').appendChild(presentationTimer.el);
-  document.getElementById('app').appendChild(feedbackTimer.el);
-}
