@@ -1,5 +1,5 @@
 import { getTimerParams } from './helpers';
-import Timer from './Timer';
+import Timebox from './Timebox';
 
 const defaultTimerParams = [
   {
@@ -16,7 +16,7 @@ const defaultTimerParams = [
 
 const timerParams = getTimerParams() || defaultTimerParams;
 
-timerParams.map(options => {
-  const timer = new Timer(options);
-  document.getElementById('app').appendChild(timer.el);
-})
+const timebox = new Timebox({
+  el: document.getElementById('app'),
+  timers: timerParams
+});
