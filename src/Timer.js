@@ -62,10 +62,12 @@ export default class Timer {
       this.remaining--;
       this.t = setTimeout(this.stepTimer.bind(this), 1000);
       this.isPlaying = true;
+      this.el.classList.add('is-playing');
     } else {
       this.el.classList.remove('warning');
       this.el.classList.add('stop');
       this.isPlaying = false;
+      this.el.classList.remove('is-playing');
     }
   }
 
@@ -79,6 +81,7 @@ export default class Timer {
   toggleTimer() {
     if(this.isPlaying) {
       this.isPlaying = false;
+      this.el.classList.remove('is-playing');
       clearTimeout(this.t);
     } else {
       this.stepTimer();

@@ -6,6 +6,7 @@ body {
 }
 
 .timer {
+	filter: grayscale(1);
 	background: green;
 	box-sizing: border-box;
 	color: white;
@@ -13,10 +14,14 @@ body {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	height: calc(100vh - 16px);
+	height: calc(50vh - 12px);
+	transition: filter 100ms;
 }
 .timer + .timer {
 	margin-top: 8px;
+}
+.is-playing {
+	filter: grayscale(0);
 }
 .warning {
 	background: #fee101;
@@ -28,21 +33,21 @@ body {
 }
 
 .time {
-	font-size: 5vh;
+	font-size: 4vh;
 	transition: font-size 250ms;
 }
 .time:hover {
 	cursor: pointer;
 }
 .focus {
-	font-size: 45vh;
+	font-size: 20vh;
 }
 .focus:hover {
 	background: none;
 }
 
 .label {
-	font-size: 3vh;
+	font-size: 2.5vh;
 	letter-spacing: .1em;
 	text-transform: uppercase;
 	font-weight: bold;
