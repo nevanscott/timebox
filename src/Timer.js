@@ -1,4 +1,4 @@
-import { formatTime } from './helpers';
+import { formatTime } from './helpers/formatTime';
 
 export default class Timer {
 
