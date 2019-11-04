@@ -1,4 +1,4 @@
-import { getTimerParams } from './helpers';
+import { parseTimerParams } from './helpers/parseTimerParams';
 import Timebox from './Timebox';
 
 const defaultTimerParams = [
@@ -14,7 +14,7 @@ const defaultTimerParams = [
   }
 ];
 
-const timerParams = getTimerParams() || defaultTimerParams;
+const timerParams = parseTimerParams() || defaultTimerParams;
 
 const timebox = new Timebox({
   el: document.getElementById('app'),
