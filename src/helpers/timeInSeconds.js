@@ -1,4 +1,4 @@
-const { minutesToSeconds } = require('./minutesToSeconds');
+import { minutesToSeconds } from './minutesToSeconds';
 
 export function timeInSeconds(time) {
   if(time.split('m')) {

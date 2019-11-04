@@ -1,4 +1,4 @@
-const { timeInSeconds } = require('./timeInSeconds');
+import { timeInSeconds } from './timeInSeconds';
 
 export function parseTimerParams(str=window.location.search) {
   return str.includes('?t=') && str.split('?t=')[1].split('|').map(

@@ -1,4 +1,4 @@
-const { pad } = require('./pad');
+import { pad } from './pad';
 
 export function formatTime(time) {
   const minutes = Math.floor(time / 60);
