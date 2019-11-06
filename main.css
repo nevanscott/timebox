@@ -1,5 +1,6 @@
 body {
-	font-family: sans-serif;
+	font-family: system-ui, sans-serif;
+	font-variant: tabular-nums slashed-zero;
 	line-height: 1.2;
 	margin: 8px;
 	padding: 0;
@@ -38,6 +39,7 @@ body {
 
 .time {
 	font-size: 4vh;
+	font-weight: 500;
 	transition: font-size 250ms;
 }
 .time:hover {
@@ -51,11 +53,12 @@ body {
 }
 
 .label {
-	font-size: 2.5vh;
-	letter-spacing: .1em;
-	text-transform: uppercase;
-	font-weight: bold;
-	color: rgba(255,255,255,.75);
+	font-size: 3vh;
+	letter-spacing: .075em;
+	font-variant: all-small-caps;
+	font-weight: 450;
+	color: rgba(255,255,255,.6);
+	margin: 0 0 0.5em;
 }
 .warning .label {
 	color: rgba(0,0,0,.25);
