@@ -1,7 +1,7 @@
 import { pad } from './pad';
 
-export function formatTime(time) {
+export function formatTime(time, separator=':') {
   const minutes = Math.floor(time / 60);
   const seconds = time % 60;
-  return minutes + ':' + pad(seconds, 2);
+  return minutes + separator + pad(seconds, 2);
 }
