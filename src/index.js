@@ -1,4 +1,5 @@
 import { parseTimerParams } from './helpers/parseTimerParams';
+import { encodeTimerParams } from './helpers/encodeTimerParams';
 import Timebox from './Timebox';
 
 const defaultTimerParams = [
@@ -15,6 +16,8 @@ const defaultTimerParams = [
 ];
 
 const timerParams = parseTimerParams() || defaultTimerParams;
+
+history.replaceState({}, "", window.location.pathname + encodeTimerParams(timerParams));
 
 const timebox = new Timebox({
   el: document.getElementById('app'),
