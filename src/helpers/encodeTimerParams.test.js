@@ -22,6 +22,6 @@ test('2 timers', () => {
       duration: 10*60
     }
   ]
-  const q = '?t=Decide:2|Present:10';
+  const q = '?t=Decide:2/Present:10';
   expect(encodeTimerParams(params)).toBe(q);
 });

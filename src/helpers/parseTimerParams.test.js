@@ -11,8 +11,8 @@ test('parse a single timer', () => {
   expect(parseTimerParams(q)).toStrictEqual(result);
 });
 
-test('handle special characters', () => {
-  const q = '?t=Presentation:15%7CFeedback:2';
+test('parse 2 timers', () => {
+  const q = '?t=Presentation:15/Feedback:2';
   const result = [
     {
       label: 'Presentation',
