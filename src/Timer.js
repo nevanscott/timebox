@@ -31,6 +31,8 @@ export default class Timer {
         } else {
           timer.toggleFocus();
         }
+      } else {
+        timer.toggleTimer();
       }
     });
 
