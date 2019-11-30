@@ -39,18 +39,18 @@ body {
 }
 .is-playing {
 	--color-background: #14DFC9;
-	--color-text: white;
+	--color-text: black;
 	--color-label: #134640;
 	box-shadow: inset 0 0 0 2px white, 0 0 0 4px #0C65E4;
 }
 .warning {
 	--color-background: #ECC908;
-	--color-text: white;
+	--color-text: black;
 	--color-label: #5C500D;
 }
 .stop {
 	--color-background: #2D3A39;
-	--color-text: white;
+	--color-text: #859B99;
 	--color-label: #859B99;
 }
 
