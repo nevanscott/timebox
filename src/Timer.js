@@ -13,6 +13,8 @@ export default class Timer {
 
     this.remainingMs = this.duration * 1000;
 
+    this.onStop = options.onStop;
+
     this.template = `
       <h2 class="label"></h2>
       <time class="remaining time focus"></time>
@@ -81,6 +83,7 @@ export default class Timer {
       this.el.classList.add('stop');
       this.isPlaying = false;
       this.el.classList.remove('is-playing');
+      this.onStop();
     }
 
     this.renderRemaining(this.remaining);
@@ -96,11 +99,19 @@ export default class Timer {
 
   toggleTimer() {
     if(this.isPlaying) {
-      this.isPlaying = false;
-      this.el.classList.remove('is-playing');
+      this.pause();
     } else {
-      this.isPlaying = true;
+      this.play();
     }
+  }
+
+  play() {
+    this.isPlaying = true;
+  }
+
+  pause() {
+    this.isPlaying = false;
+    this.el.classList.remove('is-playing');
   }
 
 }
