@@ -49,7 +49,7 @@ body {
 	--color-label: #315F5A;
 	box-shadow: inset 0 0 0 3px white, 0 0 0 3px #0C65E4;
 }
-.warning {
+.is-playing.warning {
 	--color-background: #F5DA3F;
 	--color-text: black;
 	--color-label: #5C500D;
