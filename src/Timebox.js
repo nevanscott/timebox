@@ -35,9 +35,10 @@ export default class Timebox {
 
   renderControls() {
     const template = `
-      <label>
-        <input type="checkbox" id="autoplay">
-        Auto-play
+      <label class="toggle">
+        <input type="checkbox" class="autoplay vh">
+        <span class="control"></span>
+        <span class="label">Auto-play</span>
       </label>
     `;
     const form = document.createElement('form');
@@ -47,7 +48,7 @@ export default class Timebox {
   }
 
   get isAutoplay() {
-    return this.el.querySelector('#autoplay').checked;
+    return this.el.querySelector('.autoplay').checked;
   }
 
   handleTimerStop(i) {

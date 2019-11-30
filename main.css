@@ -13,6 +13,8 @@ body {
 
 .controls {
 	margin-bottom: var(--space);
+	display: flex;
+	justify-content: flex-end;
 }
 
 .timers {
@@ -82,4 +84,66 @@ body {
 	font-weight: 650;
 	color: var(--color-label);
 	margin: 0;
+}
+
+.toggle {
+	display: flex;
+}
+.toggle > * + * {
+	margin-left: 8px;
+}
+
+[type=checkbox] ~ .control {
+	--track: 20px;
+	--control: calc(var(--track) - 4px);
+	display: inline-block;
+	width: 1.75em;
+	height: 1em;
+	position: relative;
+}
+[type=checkbox] ~ .control::before {
+	content: '';
+	height: var(--track);
+	width: 100%;
+	position: absolute;
+	top: 50%;
+	margin-top: calc(var(--track) / -2);
+	background: #DAE9E7;
+	border-radius: calc(var(--track) / 2);
+	box-shadow: inset 0 0 0 1px rgba(0,0,0,0.1);
+}
+[type=checkbox]:checked ~ .control::before {
+	background: #17FAE1;
+}
+[type=checkbox] ~ .control::after {
+	content: '';
+	height: var(--control);
+	width: var(--control);
+	position: absolute;
+	top: 50%;
+	margin-top: calc(var(--control) / -2);
+	margin-left: calc(calc(var(--control) - var(--track)) / -2);
+	margin-right: 0;
+	right: auto;
+	background: #566866;
+	border-radius: calc(var(--control) / 2);
+	left: 0;
+}
+[type=checkbox]:checked ~ .control::after {
+	background: #315F5A;
+	left: auto;
+	margin-left: 0;
+	right: 0;
+	margin-right: calc(calc(var(--control) - var(--track)) / -2);
+}
+
+
+.vh {
+    clip-path: inset(100%) !important;
+    clip: rect(1px, 1px, 1px, 1px) !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    position: absolute !important;
+    white-space: nowrap !important;
+    width: 1px !important;
 }
