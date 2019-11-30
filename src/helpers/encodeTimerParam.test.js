@@ -26,3 +26,13 @@ test('Label with spaces', () => {
   const q = 'Audience+Questions:34';
   expect(encodeTimerParam(param)).toBe(q);
 });
+
+test('Timer with a warning', () => {
+  const param = {
+    label: 'Present',
+    duration: 10*60,
+    warning: 2*60
+  };
+  const q = 'Present:10,2';
+  expect(encodeTimerParam(param)).toBe(q);
+});

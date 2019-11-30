@@ -25,3 +25,15 @@ test('parse 2 timers', () => {
   ]
   expect(parseTimerParams(q)).toStrictEqual(result);
 });
+
+test('parse a timer with a warning', () => {
+  const q = '?t=Decide:34,5';
+  const result = [
+    {
+      label: 'Decide',
+      duration: 34*60,
+      warning: 5*60
+    }
+  ]
+  expect(parseTimerParams(q)).toStrictEqual(result);
+});
