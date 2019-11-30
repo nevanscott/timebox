@@ -52,7 +52,7 @@ export default class Timebox {
 
   handleTimerStop(i) {
     if(this.isAutoplay && this.timers[i+1]) {
-      this.timers[i+1].play();
+      this.timers[i+1].start();
     }
   }
 
