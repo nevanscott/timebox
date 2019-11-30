@@ -47,14 +47,22 @@ body {
 	font-size: 16vh;
 }
 
+.time:not(.focus) {
+	border-radius: 2em;
+	padding: 0.05em 0.65em;
+}
+.time:not(.focus):hover {
+	background: rgba(0,0,0,0.3);
+}
+
 .label {
 	font-size: 3vh;
 	letter-spacing: .075em;
 	font-variant: all-small-caps;
 	font-weight: 450;
-	color: rgba(255,255,255,.6);
+	color: rgba(255,255,255,0.6);
 	margin: 0 0 0.5em;
 }
 .warning .label {
-	color: rgba(0,0,0,.25);
+	color: rgba(0,0,0,0.25);
 }
