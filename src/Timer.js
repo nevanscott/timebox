@@ -124,14 +124,13 @@ export default class Timer {
     this.el.classList.remove('is-playing');
     this.el.classList.remove('stop');
     this.remainingMs = this.duration * 1000;
-    console.log(this);
     this.render();
   }
 
   start() {
     if(!this.isPlaying) {
       this.reset();
-      this.play();      
+      this.play();
     }
   }
 
