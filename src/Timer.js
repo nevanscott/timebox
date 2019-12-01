@@ -15,9 +15,10 @@ export default class Timer {
     this.remainingMs = this.duration * 1000;
 
     this.onStop = options.onStop;
+    this.onUpdate = options.onUpdate;
 
     this.template = `
-      <h2 class="label"></h2>
+      <input type="text" class="label">
       <time class="remaining time focus"></time>
       <time class="elapsed time"></time>
     `;
@@ -34,10 +35,17 @@ export default class Timer {
         } else {
           timer.toggleFocus();
         }
+      } else if(e.target.classList.contains('label')) {
+        // do nothing
       } else {
         timer.toggleTimer();
       }
     });
+
+    this.el.querySelector('.label').addEventListener('change', function(e) {
+      timer.label = e.target.value;
+      timer.onUpdate();
+    })
 
     return this;
   }
@@ -51,7 +59,7 @@ export default class Timer {
   }
 
   render() {
-    this.el.querySelector('.label').innerHTML = this.label;
+    this.el.querySelector('.label').value = this.label;
     this.renderElapsed(0);
     this.renderRemaining(this.duration);
     return this;

@@ -1,3 +1,4 @@
+import { encodeTimerParams } from './helpers/encodeTimerParams';
 import Timer from './Timer';
 
 export default class Timebox {
@@ -25,6 +26,9 @@ export default class Timebox {
     this.timers = timers.map((options, index) => {
       options.onStop = () => {
         this.handleTimerStop(index);
+      };
+      options.onUpdate = () => {
+        this.updateTimerData(index);
       };
       const timer = new Timer(options);
       el.appendChild(timer.el);
@@ -61,5 +65,19 @@ export default class Timebox {
     const timeDifference = new Date().getTime() - this.lastUpdate;
     this.timers.map(timer => timer.update(timeDifference))
     this.lastUpdate = new Date().getTime();
+  }
+
+  updateTimerData(i) {
+    history && history.replaceState(
+      {},
+      "",
+      window.location.pathname + encodeTimerParams(this.timers.map(timer => {
+        return {
+          label: timer.label,
+          duration: timer.duration,
+          warning: timer.warning
+        }
+      }))
+    );
   }
 }

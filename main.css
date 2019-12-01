@@ -86,6 +86,18 @@ body {
 	margin: 0;
 }
 
+input.label {
+	text-align: center;
+	border: none;
+	background: transparent;
+}
+input.label:hover {
+	background: rgba(255,255,255,0.5);
+}
+input.label:focus {
+	background: white;
+}
+
 .toggle {
 	display: flex;
 }
