@@ -40,7 +40,7 @@ export default class Timebox {
   renderControls() {
     const template = `
       <label class="toggle">
-        <input type="checkbox" class="autoplay vh">
+        <input checked type="checkbox" class="autoplay vh">
         <span class="control"></span>
         <span class="label">Auto-play</span>
       </label>
