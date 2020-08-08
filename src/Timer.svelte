@@ -5,8 +5,8 @@
   const dispatch = createEventDispatcher();
 
   export let label = "Timer";
-  export let duration = 5 * 60;
-  export let warning = 2 * 20;
+  export let duration = 5 * 60 * 1000;
+  export let warning = 2 * 60 * 1000;
   export let elapsed = 0;
   export let playing = false;
 
@@ -14,6 +14,7 @@
   $: remaining = duration - elapsed;
   $: remainingSeconds = Math.ceil(remaining / 1000);
   $: finished = (remainingSeconds <= 0);
+  $: warned = (remaining <= warning);
 
   let countDown = true;
   $: countUp = !countDown;
@@ -70,6 +71,7 @@
 <article
   class="timer"
   class:is-playing={playing}
+  class:warning={warned}
   class:stop={finished}
   on:click={toggleTimer}
 >
