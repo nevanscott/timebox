@@ -32,6 +32,10 @@
     }
   }
 
+  function remove() {
+    dispatch('remove');
+  }
+
   function toggleCountDown() {
     countDown = !countDown;
   }
@@ -75,7 +79,17 @@
   class:stop={finished}
   on:click={toggleTimer}
 >
-  <input bind:value={label} type="text" class="label" on:click|stopPropagation placeholder="Timer">
+  <input
+    bind:value={label}
+    type="text"
+    class="label"
+    on:click|stopPropagation
+    placeholder="Timer"
+  >
+  <button
+    class="remove"
+    on:click|stopPropagation={remove}
+  >&times;</button>
   <time
     class="remaining time"
     class:focus={countDown}
@@ -87,3 +101,31 @@
     on:click|stopPropagation={handleClickTime(countUp)}
   >{ formatTime(elapsedSeconds) }</time>
 </article>
+
+<style>
+
+.timer {
+  position: relative;
+}
+
+.remove {
+  background: none;
+  border: none;
+  font-size: inherit;
+  font-weight: bold;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  height: 1.5em;
+  width: 1.5em;
+  line-height: 1;
+  border-radius: 1.5em;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+}
+.remove:hover {
+  background: rgba(0,0,0,0.25);
+}
+
+</style>

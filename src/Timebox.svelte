@@ -39,6 +39,13 @@
     }
   }
 
+  function remove(i) {
+    return function(e) {
+      timers.splice(i, 1);
+      timers = timers;
+    }
+  }
+
   function addTimer() {
     timers = [...timers, {...defaultTimer}]
   }
@@ -55,6 +62,7 @@
       bind:elapsed={timer.elapsed}
       bind:playing={timer.playing}
       on:finished={handleFinish(i)}
+      on:remove={remove(i)}
     />
   {/each}
   <button class="timer" on:click={addTimer}>+</button>
