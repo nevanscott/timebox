@@ -49,7 +49,29 @@
   function addTimer() {
     timers = [...timers, {...defaultTimer}]
   }
+
+  function handleKeyPress(e) {
+    if(e.code === "Space") {
+      if(timers.find(timer => timer.playing)) {
+        timers.map(timer => {
+          timer.paused = timer.playing;
+          timer.playing = false;
+        });
+      } else if(timers.find(timer => timer.paused)) {
+        timers.map(timer => {
+          timer.playing = timer.paused;
+          timer.paused = false;
+        });
+      } else {
+        timers[0].playing = true;
+      }
+      timers = timers;
+    }
+    console.log(e);
+  }
 </script>
+
+<svelte:window on:keypress={handleKeyPress}/>
 
 <Controls bind:autoplay={autoplay} />
 
