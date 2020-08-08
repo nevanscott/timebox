@@ -4,7 +4,7 @@
 	import defaultTimer from './defaultTimer';
 	import Timebox from './Timebox.svelte';
 
-	const defaultTimerParams = [ defaultTimer ];
+	const defaultTimerParams = [ {...defaultTimer} ];
 
 	let timers = parseTimerParams() || defaultTimerParams;
 

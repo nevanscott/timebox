@@ -40,7 +40,7 @@
   }
 
   function addTimer() {
-    timers = [...timers, defaultTimer]
+    timers = [...timers, {...defaultTimer}]
   }
 </script>
 
