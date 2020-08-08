@@ -1,20 +1,10 @@
 <script>
 	import parseTimerParams from './helpers/parseTimerParams';
 	import encodeTimerParams from './helpers/encodeTimerParams';
+	import defaultTimer from './defaultTimer';
 	import Timebox from './Timebox.svelte';
 
-	const defaultTimerParams = [
-	  {
-	    label: 'Presentation',
-	    duration: 15*60*1000,
-	    warning: 2*60*1000
-	  },
-	  {
-	    label: 'Feedback',
-	    duration: 2*60*1000,
-	    warning: 1*60*1000
-	  }
-	];
+	const defaultTimerParams = [ defaultTimer ];
 
 	let timers = parseTimerParams() || defaultTimerParams;
 

@@ -75,7 +75,7 @@
   class:stop={finished}
   on:click={toggleTimer}
 >
-  <input bind:value={label} type="text" class="label" on:click|stopPropagation>
+  <input bind:value={label} type="text" class="label" on:click|stopPropagation placeholder="Timer">
   <time
     class="remaining time"
     class:focus={countDown}

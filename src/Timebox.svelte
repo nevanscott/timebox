@@ -1,5 +1,6 @@
 <script>
   import encodeTimerParams from './helpers/encodeTimerParams';
+  import defaultTimer from './defaultTimer';
   import Controls from './Controls.svelte';
   import Timer from './Timer.svelte';
 
@@ -37,6 +38,10 @@
       }
     }
   }
+
+  function addTimer() {
+    timers = [...timers, defaultTimer]
+  }
 </script>
 
 <Controls bind:autoplay={autoplay} />
@@ -52,4 +57,5 @@
       on:finished={handleFinish(i)}
     />
   {/each}
+  <button class="timer" on:click={addTimer}>+</button>
 </div>

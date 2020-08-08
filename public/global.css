@@ -41,6 +41,14 @@ body {
 	transition: background-color 100ms, color 100ms;
 }
 
+button.timer {
+	border: solid 4px var(--color-background);
+	background: white;
+	color: var(--color-label);
+	font-size: inherit;
+	font-weight: bold;
+}
+
 .timer > * + * {
 	margin-top: 1.2rem;
 }
