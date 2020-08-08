@@ -1,4 +1,4 @@
-const { pad } = require('./pad');
+import pad from './pad';
 
 test('pad 3 to 4 digits should print 0003', () => {
   expect(pad(3, 4)).toBe('0003');

@@ -1,8 +1,9 @@
-import { pad } from './pad';
+import pad from './pad';
 
-export function formatTimeParam(time, separator='m') {
-  const minutes = Math.floor(time / 60);
-  const seconds = time % 60;
+export default function formatTimeParam(time, separator='m') {
+  const timeInSeconds = Math.floor(time / 1000);
+  const minutes = Math.floor(timeInSeconds / 60);
+  const seconds = timeInSeconds % 60;
   let param = minutes + '';
   if(seconds) {
     param += separator + pad(seconds, 2);

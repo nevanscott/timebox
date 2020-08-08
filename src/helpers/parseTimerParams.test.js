@@ -1,11 +1,11 @@
-const { parseTimerParams } = require('./parseTimerParams');
+import parseTimerParams from './parseTimerParams';
 
 test('parse a single timer', () => {
   const q = '?t=Decide:34';
   const result = [
     {
       label: 'Decide',
-      duration: 34*60
+      duration: 34*60*1000
     }
   ]
   expect(parseTimerParams(q)).toStrictEqual(result);
@@ -16,11 +16,11 @@ test('parse 2 timers', () => {
   const result = [
     {
       label: 'Presentation',
-      duration: 15*60
+      duration: 15*60*1000
     },
     {
       label: 'Feedback',
-      duration: 2*60
+      duration: 2*60*1000
     }
   ]
   expect(parseTimerParams(q)).toStrictEqual(result);
@@ -31,8 +31,8 @@ test('parse a timer with a warning', () => {
   const result = [
     {
       label: 'Decide',
-      duration: 34*60,
-      warning: 5*60
+      duration: 34*60*1000,
+      warning: 5*60*1000
     }
   ]
   expect(parseTimerParams(q)).toStrictEqual(result);

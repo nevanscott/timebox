@@ -1,4 +1,4 @@
-const { timeInSeconds } = require('./timeInSeconds');
+import timeInSeconds from './timeInSeconds';
 
 test('return seconds if just a number', () => {
   expect(timeInSeconds('34')).toBe(34*60);

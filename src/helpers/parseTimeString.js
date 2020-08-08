@@ -1,11 +1,11 @@
 import minutesToSeconds from './minutesToSeconds';
 
-export default function timeInSeconds(time) {
+export default function parseTimeString(time) {
   if(time.split('m')) {
     const m = parseInt(time.split('m')[0]);
     const s = parseInt(time.split('m')[1] ? time.split('m')[1] : 0);
-    return minutesToSeconds(m) + s;
+    return 1000 * (minutesToSeconds(m) + s);
   } else {
-    return minutesToSeconds(time);
+    return 1000 * minutesToSeconds(time);
   }
 }

@@ -1,4 +1,4 @@
-const { formatTime } = require('./formatTime');
+import formatTime from './formatTime';
 
 test('convert 142 seconds to 2:22', () => {
   expect(formatTime(142)).toBe('2:22');

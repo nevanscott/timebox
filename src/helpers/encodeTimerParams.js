@@ -1,5 +1,5 @@
-import { encodeTimerParam } from './encodeTimerParam';
+import encodeTimerParam from './encodeTimerParam';
 
-export function encodeTimerParams(params) {
+export default function encodeTimerParams(params) {
   return '?t=' + params.map(encodeTimerParam).join('/');
 }

@@ -1,3 +1,3 @@
-export function minutesToSeconds(minutes) {
+export default function minutesToSeconds(minutes) {
   return minutes * 60;
 }
