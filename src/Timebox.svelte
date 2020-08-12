@@ -66,6 +66,8 @@
         timers[0].playing = true;
       }
       timers = timers;
+    } else if (e.code === "Escape") {
+      document.activeElement.blur();
     }
     console.log(e);
   }
