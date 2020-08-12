@@ -51,7 +51,7 @@
   }
 
   function handleKeyPress(e) {
-    if(e.code === "Space") {
+    if(e.code === "Space" && document.activeElement === document.body) {
       if(timers.find(timer => timer.playing)) {
         timers.map(timer => {
           timer.paused = timer.playing;
