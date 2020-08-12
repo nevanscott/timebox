@@ -21,7 +21,7 @@
     const elapsed = new Date().getTime() - lastUpdate;
     timers.map(timer => {
       if (timer.playing) {
-        timer.elapsed += elapsed;
+        timer.elapsed = Math.min(timer.elapsed + elapsed, timer.duration);
       }
     });
     timers = timers;
