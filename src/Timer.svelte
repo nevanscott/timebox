@@ -27,6 +27,8 @@
   let warningSeconds = Math.floor(warning / 1000) % 60;
   $: warning = (warningMinutes * 60 + warningSeconds) * 1000;
 
+  $: placeholder = "Timer" + (counter ? (" "+counter) : "");
+
   $: if(finished) {
     playing = false;
     dispatch('finished');
