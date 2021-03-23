@@ -1,162 +1,32 @@
 :root {
 	--space: 1.25em;
+
+	--color-white: #FFF;
+	--color-gray-100: #EDF3F5;
+	--color-gray-300: #B7BDBC;
+	--color-gray-500: #868985;
+	--color-gray-700: #595854;
+	--color-gray-900: #2F2B29;
+	--color-black: #000;
+
+	--color-green: #7ADF24;
+	--color-yellow: #F9DB1A;
+	--color-pink: #FF3DDB;
 }
 
 body {
+	background-color: var(--color-gray-100);
+	color: var(--color-gray-900);
 	font-family: system-ui, sans-serif;
-	font-size: 1.2em;
 	font-variant: tabular-nums;
 	line-height: 1.2;
 	margin: var(--space);
 	padding: 0;
 }
 
-.controls {
-	margin-bottom: var(--space);
-	display: flex;
-	justify-content: flex-end;
-}
-
-.timers {
-	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  grid-auto-rows: 1fr;
-	grid-gap: var(--space);
-}
-
-.timer {
-	--color-background: #DAE9E7;
-	--color-text: black;
-	--color-label: #566866;
-	background: var(--color-background);
-	border-radius: 1.5em;
-	box-sizing: border-box;
-	color: var(--color-text);
-	cursor: pointer;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	padding: 1.5rem;
-	transition: background-color 100ms, color 100ms;
-}
-
-button.timer {
-	border: solid 4px var(--color-background);
-	background: white;
-	color: var(--color-label);
+input, button {
 	font-size: inherit;
-	font-weight: bold;
 }
-
-.timer > * + * {
-	margin-top: 1.2rem;
-}
-
-.is-playing {
-	--color-background: #17FAE1;
-	--color-text: black;
-	--color-label: #315F5A;
-	box-shadow: inset 0 0 0 3px white, 0 0 0 3px #0C65E4;
-}
-.is-playing.warning {
-	--color-background: #F5DA3F;
-	--color-text: black;
-	--color-label: #5C500D;
-}
-.stop {
-	--color-background: #2D3A39;
-	--color-text: #B3C4C2;
-	--color-label: #859B99;
-}
-
-.time {
-	font-weight: 700;
-	line-height: 1;
-	transition: font-size 250ms;
-}
-.focus {
-	font-size: 4em;
-}
-
-.time:not(.focus) {
-	border-radius: 2em;
-	padding: 0.05em 0.65em;
-}
-.time:not(.focus):hover {
-	background: rgba(0,0,0,0.3);
-}
-
-.label {
-	font-size: 1em;
-	font-weight: 650;
-	color: var(--color-label);
-	margin: 0;
-}
-
-input.label {
-	text-align: center;
-	border: none;
-	background: transparent;
-}
-input.label:hover {
-	background: rgba(255,255,255,0.5);
-}
-input.label:focus {
-	background: white;
-}
-
-.toggle {
-	display: flex;
-	align-items: center;
-}
-.toggle > * + * {
-	margin-left: 8px;
-}
-
-[type=checkbox] ~ .control {
-	--track: 20px;
-	--control: calc(var(--track) - 4px);
-	display: inline-block;
-	width: 1.75em;
-	height: 1em;
-	position: relative;
-}
-[type=checkbox] ~ .control::before {
-	content: '';
-	height: var(--track);
-	width: 100%;
-	position: absolute;
-	top: 50%;
-	margin-top: calc(var(--track) / -2);
-	background: #DAE9E7;
-	background: #B2C6C3;
-	border-radius: calc(var(--track) / 2);
-}
-[type=checkbox]:checked ~ .control::before {
-	background: #566866;
-}
-[type=checkbox] ~ .control::after {
-	content: '';
-	height: var(--control);
-	width: var(--control);
-	position: absolute;
-	top: 50%;
-	margin-top: calc(var(--control) / -2);
-	margin-left: calc(calc(var(--control) - var(--track)) / -2);
-	margin-right: 0;
-	right: auto;
-	background: white;
-	border-radius: calc(var(--control) / 2);
-	left: 0;
-}
-[type=checkbox]:checked ~ .control::after {
-	left: auto;
-	margin-left: 0;
-	right: 0;
-	margin-right: calc(calc(var(--control) - var(--track)) / -2);
-}
-
 
 .vh {
     clip-path: inset(100%) !important;

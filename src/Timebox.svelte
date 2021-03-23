@@ -87,7 +87,34 @@
       bind:playing={timer.playing}
       on:finished={handleFinish(i)}
       on:remove={remove(i)}
+      counter={i+1}
     />
   {/each}
-  <button class="timer" on:click={addTimer}>+</button>
+  <button class="new-timer" on:click={addTimer}><span class="icon">+</span> New Timer</button>
 </div>
+
+<style>
+
+.timers {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  grid-auto-rows: 1fr;
+	grid-gap: var(--space);
+}
+
+.new-timer {
+  background: transparent;
+  border: dashed 4px var(--color-gray-300);
+  border-radius: 16px;
+  color: var(--color-gray-500);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.icon {
+  color: var(--color-gray-300);
+  font-size: larger;
+  font-weight: 800;
+}
+
+</style>
