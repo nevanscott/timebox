@@ -42,7 +42,7 @@
 
 <div class="control">
   <button on:click={ decrement }>-</button>
-  <div>
+  <div class="time">
     <input
       bind:value={minutes}
       type="tel"
@@ -51,7 +51,7 @@
       placeholder="MM"
       on:blur={() => minutes = pad(minutes, 2)}
     >
-    :
+    <span class="separator">:</span>
     <input
       bind:value={seconds}
       type="tel"
@@ -74,10 +74,22 @@
   border: 1px solid rgba(0, 0, 0, 0.01);
   box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.05);
   border-radius: 10px;
-  padding: 2px;
+  padding: 1px;
 }
 .control:focus-within {
   box-shadow: 0 0 0 2px blue;
+}
+
+.control > * + * {
+  margin-left: 8px;
+}
+
+.time {
+  display: flex;
+  align-items: center;
+}
+.time > * + * {
+  margin-left: 2px;
 }
 
 input {
@@ -92,15 +104,22 @@ input:focus {
   outline: none;
 }
 
+.separator {
+  font-size: smaller;
+  font-weight: 600;
+  color: var(--color-gray-500);
+}
+
 button {
   font-size: smaller;
   font-weight: 600;
-  padding: 4px 8px;
+  padding: 2px 6px;
   background: white;
   border: 1px solid rgba(183, 189, 188, 0.4);
   box-sizing: border-box;
   box-shadow: 0px 1px 1px #B7BDBC;
   border-radius: 8px;
+  margin: 0;
 }
 
 </style>

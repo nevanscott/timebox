@@ -56,6 +56,11 @@ input {
   align-items: center;
 }
 .warning label {
+  font-size: smaller;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-gray-500);
   margin-right: 12px;
 }
 

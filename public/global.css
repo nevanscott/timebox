@@ -28,6 +28,10 @@ input, button {
 	font-size: inherit;
 }
 
+::placeholder {
+	color: var(--color-gray-500);
+}
+
 .vh {
     clip-path: inset(100%) !important;
     clip: rect(1px, 1px, 1px, 1px) !important;
