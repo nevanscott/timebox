@@ -63,6 +63,7 @@
           timer.paused = false;
         });
       } else {
+        timers[0].elapsed = 0;
         timers[0].playing = true;
       }
       timers = timers;
