@@ -145,7 +145,8 @@
   box-shadow:
     0px 1px 2px rgba(0, 0, 0, 0.1),
     0px 4px 8px rgba(0, 0, 0, 0.05);
-  padding: 32px;
+  padding: 16px;
+  height: 10rem;
 }
 
 .action {
@@ -183,6 +184,10 @@
   grid-template-columns: auto 1fr;
   grid-gap: 24px;
   align-items: center;
+}
+
+.layout > :first-child {
+  padding-left: 12px;
 }
 
 .is-playing {

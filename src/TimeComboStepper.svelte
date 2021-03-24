@@ -76,7 +76,7 @@
 input {
   background: transparent;
   border: none;
-  width: 2em;
+  width: 2ch;
   font-size: smaller;
   font-weight: 600;
   text-align: right;

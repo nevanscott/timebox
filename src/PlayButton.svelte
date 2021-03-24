@@ -42,7 +42,7 @@
 <style>
 
 .circle {
-  --size: 160px;
+  --size: 120px;
   --track: var(--color-gray-100);
   --fill: var(--color-gray-300);
   width: var(--size);
@@ -69,7 +69,7 @@
 }
 
 button {
-  --size: 120px;
+  --size: 90px;
   width: var(--size);
   height: var(--size);
   display: flex;

@@ -55,14 +55,18 @@
   display: flex;
   flex-direction: column;
 }
+.buttons > * + * {
+  margin-top: -1px;
+}
 
 input {
   background: transparent;
   border: none;
-  width: 3em;
+  width: 2ch;
   text-align: right;
   margin-right: 8px;
   font-weight: 600;
+  padding-left: 12px;
 }
 input:focus {
   outline: none;
@@ -76,7 +80,13 @@ button {
   border: 1px solid rgba(183, 189, 188, 0.4);
   box-sizing: border-box;
   box-shadow: 0px 1px 1px #B7BDBC;
-  border-radius: 8px;
+  margin: 0;
+}
+button:first-child {
+  border-radius: 8px 8px 0 0;
+}
+button:last-child {
+  border-radius: 0 0 8px 8px;
 }
 
 </style>
