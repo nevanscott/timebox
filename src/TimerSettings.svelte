@@ -43,9 +43,12 @@ input {
 }
 
 .layout {
-  display: grid;
-  grid-template-rows: auto auto auto;
-  grid-gap: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.layout > * + * {
+  margin-top: 12px;
 }
 
 .warning {
