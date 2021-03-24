@@ -81,24 +81,21 @@
 }
 
 .control > * + * {
-  margin-left: 8px;
+  margin-left: 4px;
 }
 
 .time {
   display: flex;
   align-items: center;
 }
-.time > * + * {
-  margin-left: 2px;
-}
 
 input {
   background: transparent;
   border: none;
-  width: 2ch;
+  width: 3ch;
   font-size: smaller;
   font-weight: 600;
-  text-align: right;
+  text-align: center;
 }
 input:focus {
   outline: none;

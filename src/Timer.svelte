@@ -193,7 +193,7 @@
 }
 
 .layout > :first-child {
-  padding-left: 8px;
+  padding-left: 4px;
 }
 
 .label {

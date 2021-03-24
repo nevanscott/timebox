@@ -67,8 +67,8 @@
 input {
   background: transparent;
   border: none;
-  width: 2ch;
-  text-align: right;
+  width: 3ch;
+  text-align: center;
   margin-right: 8px;
   font-weight: 600;
   padding-left: 12px;

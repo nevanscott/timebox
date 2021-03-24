@@ -73,7 +73,7 @@ input {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  margin: -4px -6px;
+  margin: -2px -6px;
 }
 .warning > * {
   padding: 2px 6px;
