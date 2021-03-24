@@ -41,7 +41,7 @@
 </script>
 
 <div class="control">
-  <button on:click={ decrement }>-</button>
+  <button on:click={ decrement }>–</button>
   <div class="time">
     <input
       bind:value={minutes}

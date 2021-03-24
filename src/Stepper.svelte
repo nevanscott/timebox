@@ -37,7 +37,7 @@
   >
   <div class="buttons">
     <button on:click={ increment }>+</button>
-    <button on:click={ decrement }>-</button>
+    <button on:click={ decrement }>–</button>
   </div>
 </div>
 
