@@ -72,7 +72,6 @@
 
   function reset() {
     playing = false;
-    finished = false;
     elapsed = 0;
   }
 
