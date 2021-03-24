@@ -75,7 +75,10 @@
 
 <svelte:window on:keypress={handleKeyPress}/>
 
-<Controls bind:autoplay={autoplay} />
+<div class="page-header">
+  <header role="banner">Timebox</header>
+  <Controls bind:autoplay={autoplay} />
+</div>
 
 <div class="timers">
   {#each timers as timer, i}
@@ -115,6 +118,17 @@
   color: var(--color-gray-300);
   font-size: larger;
   font-weight: 800;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 12px;
+}
+
+[role=banner] {
+  color: var(--color-gray-300);
+  font-weight: 600;
 }
 
 </style>
