@@ -57,7 +57,7 @@
 }
 
 .playing {
-  --fill: var(--color-green);
+  --fill: var(--color-blue);
 }
 
 .warning.playing {

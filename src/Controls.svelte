@@ -51,7 +51,7 @@ label {
   box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.05);
 }
 [type=checkbox]:checked ~ .control::before {
-  background: var(--color-green);
+  background: var(--color-blue);
 }
 [type=checkbox] ~ .control::after {
 	content: '';
