@@ -147,8 +147,8 @@
   box-shadow:
     0px 1px 2px rgba(0, 0, 0, 0.1),
     0px 4px 8px rgba(0, 0, 0, 0.05);
-  padding: 16px;
-  height: 10rem;
+  padding: 8px 16px;
+  height: 11rem;
 }
 
 .action {
@@ -192,7 +192,7 @@
 }
 
 .layout > :first-child {
-  padding-left: 12px;
+  padding-left: 8px;
 }
 
 .label {

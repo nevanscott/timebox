@@ -20,12 +20,16 @@
       placeholder={placeholder}
     >
   </div>
-  <div class="duration">
-    <TimeSplitStepper bind:time={duration} />
-  </div>
-  <div class="warning">
-    <label>Warn&nbsp;at</label>
-    <TimeComboStepper bind:time={warning} step={15} max={duration} />
+  <div class="times">
+    <div class="duration">
+      <TimeSplitStepper bind:time={duration} />
+    </div>
+    <div class="warning">
+      <label>Warn&nbsp;at</label>
+      <div>
+        <TimeComboStepper bind:time={warning} step={15} max={duration} />
+      </div>
+    </div>
   </div>
 </div>
 
@@ -44,16 +48,35 @@ input {
 
 .layout {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: -6px;
 }
 
-.layout > * + * {
-  margin-top: 12px;
+.layout > * {
+  padding: 6px;
+}
+
+.times {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: -6px -12px;
+}
+.times > * {
+  padding: 6px 12px;
 }
 
 .warning {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
+  margin: -4px -6px;
+}
+.warning > * {
+  padding: 2px 6px;
 }
 .warning label {
   font-size: smaller;
@@ -61,7 +84,6 @@ input {
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--color-gray-500);
-  margin-right: 12px;
 }
 
 </style>
