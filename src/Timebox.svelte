@@ -64,13 +64,14 @@
         });
       } else {
         timers[0].elapsed = 0;
-        timers[0].playing = true;
+        if (timers[0].duration > 0) {
+          timers[0].playing = true;
+        }
       }
       timers = timers;
     } else if (e.code === "Escape") {
       document.activeElement.blur();
     }
-    console.log(e);
   }
 </script>
 
