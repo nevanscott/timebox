@@ -16,9 +16,9 @@
   $: elapsedSeconds = Math.floor(elapsed / 1000);
   $: remaining = duration - elapsed;
   $: remainingSeconds = Math.ceil(remaining / 1000);
-  $: finished = (remainingSeconds <= 0);
+  $: finished = (duration > 0 && remainingSeconds <= 0);
   $: warned = (remaining <= warning);
-  $: completed = (elapsed / duration).toFixed(4);
+  $: completed = duration ? (elapsed / duration).toFixed(4) : 0;
 
   let countDown = true;
   $: countUp = !countDown;
