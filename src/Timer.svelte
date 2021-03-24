@@ -180,10 +180,13 @@
 }
 
 .layout {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  grid-gap: 24px;
+  display: flex;
   align-items: center;
+  justify-content: space-around;
+}
+
+.layout > * + * {
+  margin-left: 24px;
 }
 
 .layout > :first-child {
