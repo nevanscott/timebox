@@ -93,7 +93,7 @@
       class="remove action"
       on:click|stopPropagation={remove}
     >&times;</button>
-  {:else}
+  {:else if !playing}
     <button
       class="reset action"
       on:click|stopPropagation={reset}
@@ -119,16 +119,18 @@
         />
       {:else}
         <div class="label">{label || placeholder}</div>
-        <time
-          class="remaining time"
-          class:focus={countDown}
-          on:click|stopPropagation={handleClickTime(countDown)}
-        >{ formatTime(remainingSeconds) }</time>
-        <time
-          class="elapsed time"
-          class:focus={countUp}
-          on:click|stopPropagation={handleClickTime(countUp)}
-        >{ formatTime(elapsedSeconds) }</time>
+        <div class="times">
+          <time
+            class="remaining time"
+            class:focus={countDown}
+            on:click|stopPropagation={handleClickTime(countDown)}
+          >{ formatTime(remainingSeconds) }</time>
+          <time
+            class="elapsed time"
+            class:focus={countUp}
+            on:click|stopPropagation={handleClickTime(countUp)}
+          >{ formatTime(elapsedSeconds) }</time>
+        </div>
       {/if}
     </div>
   </div>
@@ -193,36 +195,35 @@
   padding-left: 12px;
 }
 
-.is-playing {
-	--color-background: #17FAE1;
-	--color-text: black;
-	--color-label: #315F5A;
-	box-shadow: inset 0 0 0 3px white, 0 0 0 3px #0C65E4;
+.label {
+  font-weight: 600;
 }
-.is-playing.warning {
-	--color-background: #F5DA3F;
-	--color-text: black;
-	--color-label: #5C500D;
+
+.times {
+  height: 4em;
+  display: flex;
+  align-items: flex-end;
 }
-.stop {
-	--color-background: #2D3A39;
-	--color-text: #B3C4C2;
-	--color-label: #859B99;
+.times > * + * {
+  margin-inline-start: 8px;
 }
 
 .time {
 	font-weight: 700;
 	line-height: 1;
 	transition: font-size 250ms;
+  cursor: pointer;
 }
 .focus {
 	font-size: 4em;
+  margin-bottom: -0.1em;
 }
 
 .time:not(.focus) {
+  color: var(--color-gray-500);
 }
 .time:not(.focus):hover {
-	background: rgba(0,0,0,0.3);
+  color: var(--color-gray-700);
 }
 
 </style>
