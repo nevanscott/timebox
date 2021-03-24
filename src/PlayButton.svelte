@@ -1,12 +1,21 @@
 <script>
   import { createEventDispatcher } from 'svelte';
-  const dispatch = createEventDispatcher();
+  import { tweened } from 'svelte/motion';
+
   export let finished;
   export let playing;
   export let warning;
   export let completed;
 
-  $: turn = `${completed}turn`
+  const dispatch = createEventDispatcher();
+
+  let ratio = tweened(parseFloat(completed), {
+    duration: 350
+  });
+
+  $: ratio.set(parseFloat(completed));
+
+  $: turn = `${$ratio}turn`
 </script>
 
 <div
