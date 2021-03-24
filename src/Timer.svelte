@@ -3,9 +3,11 @@
   import { createEventDispatcher } from 'svelte';
   import PlayButton from './PlayButton.svelte';
   import TimerSettings from './TimerSettings.svelte';
+  import { fly } from 'svelte/transition';
 
   const dispatch = createEventDispatcher();
 
+  export let id;
   export let label = "Timer";
   export let counter;
   export let duration = 60 * 1000;
@@ -88,6 +90,7 @@
   class:is-playing={playing}
   class:warning={warned}
   class:stop={finished}
+  transition:fly="{{ y: 8, duration: 250 }}"
 >
   {#if elapsed === 0}
     <button

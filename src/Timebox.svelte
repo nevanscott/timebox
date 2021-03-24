@@ -3,10 +3,14 @@
   import defaultTimer from './defaultTimer';
   import Controls from './Controls.svelte';
   import Timer from './Timer.svelte';
+  import { flip } from 'svelte/animate';
 
   export let timers;
 
+  let uid = 1;
+
   timers.map(timer => {
+    timer.id = uid++;
     timer.elapsed = 0;
     timer.playing = false;
   });
@@ -29,25 +33,20 @@
   }
 
   function handleFinish(i) {
-    return function(e) {
-      if(autoplay && timers[i+1] && !timers[i+1].playing) {
-        timers[i+1].finished = false;
-        timers[i+1].elapsed = 0;
-        timers[i+1].playing = true;
-        timers = timers;
-      }
-    }
-  }
-
-  function remove(i) {
-    return function(e) {
-      timers.splice(i, 1);
+    if(autoplay && timers[i+1] && !timers[i+1].playing) {
+      timers[i+1].finished = false;
+      timers[i+1].elapsed = 0;
+      timers[i+1].playing = true;
       timers = timers;
     }
   }
 
+  function remove(timer) {
+    timers = timers.filter(t => t !== timer);
+  }
+
   function addTimer() {
-    timers = [...timers, {...defaultTimer}]
+    timers = [...timers, { id: uid++, ...defaultTimer}]
   }
 
   function handleKeyPress(e) {
@@ -86,19 +85,30 @@
 </div>
 
 <div class="timers">
-  {#each timers as timer, i}
-    <Timer
-      bind:label={timer.label}
-      bind:duration={timer.duration}
-      bind:warning={timer.warning}
-      bind:elapsed={timer.elapsed}
-      bind:playing={timer.playing}
-      on:finished={handleFinish(i)}
-      on:remove={remove(i)}
-      counter={i+1}
-    />
+  {#each timers as timer, i (timer.id)}
+    <div
+      animate:flip="{{duration: 200}}"
+    >
+      <Timer
+        bind:label={timer.label}
+        bind:duration={timer.duration}
+        bind:warning={timer.warning}
+        bind:elapsed={timer.elapsed}
+        bind:playing={timer.playing}
+        on:finished={() => handleFinish(i)}
+        on:remove={() => remove(timer)}
+        id={timer.id}
+        counter={i+1}
+      />
+    </div>
   {/each}
-  <button class="new-timer" on:click={addTimer}><span class="icon">+</span> New Timer</button>
+  <button
+    class="new-timer"
+    on:click={addTimer}
+  >
+    <span class="icon">+</span>
+    New Timer
+  </button>
 </div>
 
 <style>
