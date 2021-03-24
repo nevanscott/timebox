@@ -1,9 +1,13 @@
 <script>
+  import pad from './helpers/pad';
+
   export let value = 0;
   export let step = 1;
   export let max = Infinity;
   export let min = 0;
   export let placeholder;
+
+  value = pad(value, 2);
 
   function increment() {
     if (value + step <= max) {
@@ -29,6 +33,7 @@
     pattern="\d*"
     maxlength="2"
     placeholder={placeholder}
+    on:blur={() => value = pad(value, 2)}
   >
   <div class="buttons">
     <button on:click={ increment }>+</button>

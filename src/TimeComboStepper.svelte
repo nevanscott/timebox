@@ -1,5 +1,7 @@
 <script>
+  import pad from './helpers/pad';
   import Stepper from './Stepper.svelte';
+
   export let time = 60 * 1000;
   export let step = 1;
   export let max = Infinity;
@@ -7,7 +9,10 @@
 
   let minutes = Math.floor(time / 1000 / 60);
   let seconds = Math.floor(time / 1000) % 60;
-  $: time = (minutes * 60 + seconds) * 1000;
+  $: time = (parseInt(minutes) * 60 + parseInt(seconds)) * 1000;
+
+  minutes = pad(minutes, 2);
+  seconds = pad(seconds, 2);
 
   $: maxInSeconds = Math.floor(max / 1000);
   $: minInSeconds = Math.floor(min / 1000);
@@ -19,8 +24,8 @@
     } else {
       timeInSeconds = maxInSeconds;
     }
-    minutes = Math.floor(timeInSeconds / 60);
-    seconds = Math.floor(timeInSeconds % 60);
+    minutes = pad(Math.floor(timeInSeconds / 60), 2);
+    seconds = pad(Math.floor(timeInSeconds % 60), 2);
   }
 
   function decrement() {
@@ -30,8 +35,8 @@
     } else {
       timeInSeconds = minInSeconds;
     }
-    minutes = Math.floor(timeInSeconds / 60);
-    seconds = Math.floor(timeInSeconds % 60);
+    minutes = pad(Math.floor(timeInSeconds / 60), 2);
+    seconds = pad(Math.floor(timeInSeconds % 60), 2);
   }
 </script>
 
@@ -44,6 +49,7 @@
       pattern="\d*"
       maxlength="2"
       placeholder="MM"
+      on:blur={() => minutes = pad(minutes, 2)}
     >
     :
     <input
@@ -52,6 +58,7 @@
       pattern="\d*"
       maxlength="2"
       placeholder="SS"
+      on:blur={() => seconds = pad(seconds, 2)}
     >
   </div>
   <button on:click={ increment }>+</button>

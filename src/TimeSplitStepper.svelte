@@ -4,7 +4,7 @@
 
   let minutes = Math.floor(time / 1000 / 60);
   let seconds = Math.floor(time / 1000) % 60;
-  $: time = (minutes * 60 + seconds) * 1000;
+  $: time = (parseInt(minutes) * 60 + parseInt(seconds)) * 1000;
 </script>
 
 <div class="control">
