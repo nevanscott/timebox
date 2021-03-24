@@ -198,7 +198,7 @@
 }
 
 .label {
-  font-weight: 600;
+  font-weight: 650;
 }
 
 .times {
