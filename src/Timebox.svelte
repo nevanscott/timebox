@@ -128,7 +128,14 @@
 
 [role=banner] {
   color: var(--color-gray-300);
+  cursor: default;
   font-weight: 600;
-}
+  -webkit-touch-callout: none;
+    -webkit-user-select: none;
+     -khtml-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+  }
 
 </style>

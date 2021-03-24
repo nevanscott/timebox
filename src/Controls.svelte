@@ -21,6 +21,7 @@
 .toggle {
 	display: flex;
 	align-items: center;
+  cursor: pointer;
 }
 .toggle > * + * {
 	margin-left: 8px;

@@ -28,6 +28,10 @@ input, button {
 	font-size: inherit;
 }
 
+button {
+	cursor: pointer;
+}
+
 ::placeholder {
 	color: var(--color-gray-500);
 }
