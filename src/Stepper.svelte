@@ -10,18 +10,18 @@
   value = pad(value, 2);
 
   function increment() {
-    if (value + step <= max) {
-      value = value + step;
+    if (parseInt(value) + step <= max) {
+      value = pad(parseInt(value) + step, 2);
     } else {
-      value = max;
+      value = pad(max, 2);
     }
   }
 
   function decrement() {
-    if(value - step >= min) {
-      value = value - step;
+    if(parseInt(value) - step >= min) {
+      value = pad(parseInt(value) - step, 2);
     } else {
-      value = min;
+      value = pad(min, 2);
     }
   }
 </script>
