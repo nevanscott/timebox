@@ -61,7 +61,9 @@
   }
 
   function play() {
-    playing = true;
+    if (duration > 0) {
+      playing = true;
+    }
   }
 
   function pause() {
