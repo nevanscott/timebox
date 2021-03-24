@@ -64,7 +64,9 @@
         });
       } else {
         if (timers[0].elapsed > 0) {
-          timers[0].elapsed = 0;
+          timers.map(timer => {
+            timer.elapsed = 0;
+          })
         } else if (timers[0].duration > 0) {
           timers[0].playing = true;
         }
