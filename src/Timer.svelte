@@ -177,7 +177,9 @@
 }
 
 .remove {
-  width: 1.5em;
+  height: 1.25em;
+  width: 1.25em;
+  font-size: 1.2em;
   line-height: 1;
 }
 .reset {
