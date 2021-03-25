@@ -90,7 +90,7 @@
   class:is-playing={playing}
   class:warning={warned}
   class:stop={finished}
-  transition:fly="{{ y: 8, duration: 250 }}"
+  transition:fly="{{ y: 4, duration: 250 }}"
 >
   {#if elapsed === 0}
     <button
