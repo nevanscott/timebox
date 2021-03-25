@@ -38,9 +38,9 @@
 input {
   width: 10em;
   background: var(--color-gray-100);
-  border: 1px solid rgba(0, 0, 0, 0.01);
+  border: none;
   box-sizing: border-box;
-  box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--box-shadow-recessed);
   border-radius: 10px;
   padding: 8px 12px;
   font-weight: 600;

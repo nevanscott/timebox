@@ -71,10 +71,10 @@
   align-items: center;
   justify-content: space-between;
   background: var(--color-gray-100);
-  border: 1px solid rgba(0, 0, 0, 0.01);
-  box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.05);
+  border: none;
+  box-shadow: var(--box-shadow-recessed);
   border-radius: 10px;
-  padding: 1px;
+  padding: 2px 2px 3px;
 }
 .control:focus-within {
   box-shadow: 0 0 0 2px blue;

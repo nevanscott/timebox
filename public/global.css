@@ -13,6 +13,11 @@
 	--color-green: #7ADF24;
 	--color-yellow: #F9DB1A;
 	--color-pink: #FF3DDB;
+
+	--box-shadow-recessed:
+		inset 0 1px 1px rgba(0, 0, 0, 0.05),
+		inset 0 0 0 1px rgba(0, 0, 0, 0.01)
+		;
 }
 
 body {
