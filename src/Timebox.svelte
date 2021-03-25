@@ -97,7 +97,6 @@
         bind:playing={timer.playing}
         on:finished={() => handleFinish(i)}
         on:remove={() => remove(timer)}
-        id={timer.id}
         counter={i+1}
       />
     </div>
