@@ -7,7 +7,6 @@
 
   const dispatch = createEventDispatcher();
 
-  export let id;
   export let label = "Timer";
   export let counter;
   export let duration = 60 * 1000;
