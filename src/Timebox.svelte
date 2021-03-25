@@ -144,7 +144,7 @@
 [role=banner] {
   color: var(--color-gray-300);
   cursor: default;
-  font-weight: 600;
+  font-weight: 650;
   -webkit-touch-callout: none;
     -webkit-user-select: none;
      -khtml-user-select: none;
