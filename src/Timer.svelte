@@ -204,12 +204,13 @@
 }
 
 .times {
-  height: 4em;
   display: flex;
-  align-items: flex-end;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 8px;
 }
 .times > * + * {
-  margin-inline-start: 8px;
+  margin-block-start: 8px;
 }
 
 .time {
@@ -220,7 +221,6 @@
 }
 .focus {
 	font-size: 4em;
-  margin-bottom: -0.1em;
 }
 
 .time:not(.focus) {
