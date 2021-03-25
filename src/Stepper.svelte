@@ -36,8 +36,8 @@
     on:blur={() => value = pad(value, 2)}
   >
   <div class="buttons">
-    <button on:click={ increment }>+</button>
-    <button on:click={ decrement }>–</button>
+    <button on:click={ increment } tabindex="-1">+</button>
+    <button on:click={ decrement } tabindex="-1">–</button>
   </div>
 </div>
 
@@ -75,6 +75,7 @@ input {
 }
 input:focus {
   outline: none;
+  box-shadow: none;
 }
 
 button {

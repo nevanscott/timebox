@@ -92,6 +92,13 @@ button {
     0px 1px 2px rgba(0, 0, 0, 0.1),
     0px 4px 8px rgba(0, 0, 0, 0.05);
 }
+button:focus {
+  box-shadow:
+    0px 1px 2px rgba(0, 0, 0, 0.1),
+    0px 4px 8px rgba(0, 0, 0, 0.05),
+    0 0 0 2px blue;
+
+}
 button:active {
   color: inherit;
   transform: translateY(1px);

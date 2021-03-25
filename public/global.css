@@ -33,6 +33,10 @@ body {
 input, button {
 	font-size: inherit;
 }
+input:focus, button:focus {
+	outline: none;
+	box-shadow: 0 0 0 2px blue;
+}
 
 button {
 	cursor: pointer;

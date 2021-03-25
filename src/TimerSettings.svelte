@@ -45,6 +45,9 @@ input {
   padding: 8px 12px;
   font-weight: 600;
 }
+input:focus {
+  box-shadow: 0 0 0 2px blue;
+}
 
 .layout {
   display: flex;

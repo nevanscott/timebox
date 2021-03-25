@@ -92,17 +92,6 @@
   class:stop={finished}
   transition:fly="{{ y: 4, duration: 250 }}"
 >
-  {#if elapsed === 0}
-    <button
-      class="remove action"
-      on:click|stopPropagation={remove}
-    >&times;</button>
-  {:else if !playing}
-    <button
-      class="reset action"
-      on:click|stopPropagation={reset}
-    >Reset</button>
-  {/if}
   <div class="layout">
     <div>
       <PlayButton
@@ -138,6 +127,17 @@
       {/if}
     </div>
   </div>
+  {#if elapsed === 0}
+    <button
+      class="remove action"
+      on:click|stopPropagation={remove}
+    >&times;</button>
+  {:else if !playing}
+    <button
+      class="reset action"
+      on:click|stopPropagation={reset}
+    >Reset</button>
+  {/if}
 </article>
 
 <style>

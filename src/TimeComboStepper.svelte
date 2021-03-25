@@ -41,7 +41,7 @@
 </script>
 
 <div class="control">
-  <button on:click={ decrement }>–</button>
+  <button on:click={ decrement } tabindex="-1">–</button>
   <div class="time">
     <input
       bind:value={minutes}
@@ -61,7 +61,7 @@
       on:blur={() => seconds = pad(seconds, 2)}
     >
   </div>
-  <button on:click={ increment }>+</button>
+  <button on:click={ increment } tabindex="-1">+</button>
 </div>
 
 <style>
@@ -99,6 +99,7 @@ input {
 }
 input:focus {
   outline: none;
+  box-shadow: none;
 }
 
 .separator {
