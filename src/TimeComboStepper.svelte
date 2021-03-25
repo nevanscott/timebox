@@ -117,6 +117,13 @@ button {
   box-shadow: 0px 1px 1px #B7BDBC;
   border-radius: 8px;
   margin: 0;
+  transform: translateY(0);
 }
+button:active {
+  color: inherit;
+  transform: translateY(1px);
+  box-shadow: none;
+}
+
 
 </style>

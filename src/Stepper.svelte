@@ -86,6 +86,12 @@ button {
   box-sizing: border-box;
   box-shadow: 0px 1px 1px #B7BDBC;
   margin: 0;
+  transform: translateY(0);
+}
+button:active {
+  color: inherit;
+  transform: translateY(1px);
+  box-shadow: none;
 }
 button:first-child {
   border-radius: 8px 8px 0 0;
