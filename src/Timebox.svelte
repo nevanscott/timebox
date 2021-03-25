@@ -107,7 +107,7 @@
     on:click={addTimer}
   >
     <span class="icon">+</span>
-    New Timer
+    <span>New Timer</span>
   </button>
 </div>
 
@@ -127,12 +127,35 @@
   color: var(--color-gray-500);
   font-weight: 600;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateY(0);
+  transition: background-color 200ms, border-color 200ms, color 200ms;
+}
+.new-timer > * + * {
+  margin-inline-start: 8px;
+}
+
+.new-timer:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: var(--color-gray-500);
+  color: var(--color-gray-700);
+}
+.new-timer:active {
+  transform: translateY(1px);
 }
 
 .icon {
   color: var(--color-gray-300);
-  font-size: larger;
-  font-weight: 800;
+  font-size: 2.5em;
+  font-weight: 600;
+  transform: translateY(-0.09em);
+  transition: color 200ms;
+}
+
+.new-timer:hover .icon {
+  color: var(--color-gray-500);
 }
 
 .page-header {
