@@ -5,15 +5,26 @@
   export let finished;
   export let playing;
   export let warning;
+  export let duration;
   export let completed;
 
   const dispatch = createEventDispatcher();
 
+  const drag = 100;
+
   let ratio = tweened(parseFloat(completed), {
-    duration: 350
+    duration: drag
   });
 
-  $: ratio.set(parseFloat(completed));
+  function calculateRatio(completed, duration, drag) {
+    if (duration > 0) {
+      return Math.min(1, parseFloat(completed) * (duration + drag) / duration);
+    } else {
+      return 0;
+    }
+  }
+
+  $: ratio.set(calculateRatio(completed, duration, drag));
 
   $: turn = `${$ratio}turn`
 </script>

@@ -99,6 +99,7 @@
         playing={playing}
         warning={warned}
         completed={completed}
+        {duration}
       />
     </div>
     <div>
