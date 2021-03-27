@@ -36,7 +36,7 @@
 <style>
 
 input {
-  width: 10em;
+  width: 18ch;
   background: var(--color-gray-100);
   border: none;
   box-sizing: border-box;
