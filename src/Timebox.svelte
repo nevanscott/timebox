@@ -114,7 +114,7 @@
 
 .timers {
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+	grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
   grid-auto-rows: 1fr;
 	grid-gap: var(--space);
 }

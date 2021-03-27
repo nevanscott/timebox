@@ -67,10 +67,11 @@
 input {
   background: transparent;
   border: none;
-  width: 3ch;
+  width: 2.5ch;
   text-align: center;
   margin-right: 8px;
-  font-weight: 600;
+  font-size: 1.5em;
+  font-weight: 650;
   padding-left: 12px;
 }
 input:focus {
