@@ -10,7 +10,7 @@
 
   const dispatch = createEventDispatcher();
 
-  const drag = 100;
+  const drag = 300;
 
   let ratio = tweened(parseFloat(completed), {
     duration: drag
