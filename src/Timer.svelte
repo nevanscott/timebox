@@ -89,7 +89,7 @@
   class:is-playing={playing}
   class:warning={warned}
   class:stop={finished}
-  transition:fly="{{ y: 4, duration: 250 }}"
+  transition:fly|global="{{ y: 4, duration: 250 }}"
 >
   <div class="layout">
     <div>
